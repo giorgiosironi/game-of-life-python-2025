@@ -3,8 +3,7 @@ from view_model import construct_view_model
 def count_alive_cells(view_model):
     return sum(cell for row in view_model for cell in row)
 
-def test_empty_grid():
-    """Test that an empty list of cells creates a grid of dead cells"""
+def test_empty_list_of_alive_cells_displays_all_dead_cells():
     alive_cells = []
     view_model = construct_view_model(alive_cells, max_x=2, max_y=2)
     
