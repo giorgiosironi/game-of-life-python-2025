@@ -8,3 +8,4 @@ def test_blinker_page(client):
     """Test that blinker example page loads"""
     response = client.get('/examples/blinker')
     assert response.status_code == 200
+    assert response.data.count(b'<td>') == 100, "Expecting a 10x10 table"
