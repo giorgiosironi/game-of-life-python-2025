@@ -1,4 +1,4 @@
-.PHONY: setup dev clean
+.PHONY: setup dev clean test
 
 setup:
 	python3 -m venv venv
@@ -8,6 +8,9 @@ setup:
 
 dev:
 	. venv/bin/activate && flask --app src/app.py run --debug
+
+test:
+	. venv/bin/activate && PYTHONPATH=src pytest
 
 clean:
 	rm -rf venv
