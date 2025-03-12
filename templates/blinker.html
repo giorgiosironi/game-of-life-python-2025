@@ -1,9 +1,17 @@
-<table>
-    {% for _ in range(height) %}
-        <tr>
-            {% for _ in range(width) %}
-                <td></td>
-            {% endfor %}
-        </tr>
-    {% endfor %}
-</table> 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blinker Example</title>
+</head>
+<body>
+    <table>
+        {% for _ in range(height) %}
+            <tr>
+                {% for _ in range(width) %}
+                    <td></td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html> 
