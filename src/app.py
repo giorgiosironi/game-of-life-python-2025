@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 from view_model import AliveCell, construct_view_model
 
-# question these two generated values. They appear to work empirically within `make dev`
 app = Flask(__name__, template_folder='../templates')
 
 @app.route('/')
