@@ -7,8 +7,7 @@ app = Flask(__name__, template_folder='../templates')
 def hello():
     return render_template('index.html')
 
-@app.route('/examples/blinker')
-def blinker_example():
+def blinker_view_model():
     width, height = 8, 6
     rows = []
     for y in range(height):
@@ -17,4 +16,9 @@ def blinker_example():
             cell = y == 3 and 2 <= x <= 4
             row.append(cell)
         rows.append(row)
-    return render_template('generation.html', rows=rows, title="Blinker Example")
+    return rows
+
+@app.route('/examples/blinker')
+def blinker_example():
+    displayed_cells = blinker_view_model()
+    return render_template('generation.html', displayed_cells=displayed_cells, title="Blinker Example")
