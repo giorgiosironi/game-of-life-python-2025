@@ -29,10 +29,10 @@ def test_empty_list_of_alive_cells_displays_all_dead_cells():
     assert_columns(view_model)
     assert count_alive_cells(view_model) == 0, "Expect all cells to be dead"
 
-def test_one_alive_cells_is_displayed():
+def test_one_alive_cell_is_displayed():
     alive_cells = [AliveCell(1, 2)]
     view_model = construct_view_model(alive_cells, max_x=max_x, max_y=max_y)
     
     assert_rows(view_model)
     assert_columns(view_model)
-    #assert count_alive_cells(view_model) == 1, "Expect one cells to be alive"
+    assert count_alive_cells(view_model) == 1, "Expect one cell to be alive"
