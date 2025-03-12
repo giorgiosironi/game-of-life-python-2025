@@ -9,4 +9,4 @@ def hello():
 
 @app.route('/examples/blinker')
 def blinker_example():
-    return ''
+    return render_template('blinker.html')
