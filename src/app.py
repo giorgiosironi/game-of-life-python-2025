@@ -9,4 +9,12 @@ def hello():
 
 @app.route('/examples/blinker')
 def blinker_example():
-    return render_template('blinker.html', width=8, height=6)
+    width, height = 8, 6
+    rows = []
+    for y in range(height):
+        row = []
+        for x in range(width):
+            cell = y == 3 and 2 <= x <= 4
+            row.append(cell)
+        rows.append(row)
+    return render_template('generation.html', rows=rows, title="Blinker Example")

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Blinker Example</title>
+    <title>{{ title }}</title>
     <style>
         table {
             border-collapse: collapse;
@@ -11,14 +11,17 @@
             width: 30px;
             height: 30px;
         }
+        .cell--alive {
+            background-color: black;
+        }
     </style>
 </head>
 <body>
     <table>
-        {% for _ in range(height) %}
+        {% for row in rows %}
             <tr>
-                {% for _ in range(width) %}
-                    <td></td>
+                {% for cell in row %}
+                    <td {% if cell %}class="cell--alive"{% endif %}></td>
                 {% endfor %}
             </tr>
         {% endfor %}
