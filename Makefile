@@ -5,7 +5,7 @@ setup:
 	. venv/bin/activate && pip install -r requirements.txt
 
 dev:
-	. venv/bin/activate && python3 src/app.py
+	. venv/bin/activate && flask --app src/app.py run --debug
 
 clean:
 	rm -rf venv
