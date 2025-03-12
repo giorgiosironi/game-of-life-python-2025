@@ -1,10 +1,4 @@
-from dataclasses import dataclass
-from view_model import construct_view_model
-
-@dataclass
-class AliveCell:
-    x: int
-    y: int
+from view_model import AliveCell, construct_view_model
 
 max_x = 2
 max_y = 2
