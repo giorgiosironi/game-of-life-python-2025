@@ -11,3 +11,10 @@ def test_blinker_page(page):
     soup = page('/examples/blinker')
     assert len(soup.select('td')) == width * height, f"Expecting a {width}x{height} table"
     assert len(soup.select('td.cell--alive')) == 3, "Expecting exactly 3 living cells"
+
+def test_blinker_evolves(page):
+    """Test that blinker example page evolves to the next generation"""
+    width, height = 8, 6
+    soup = page('/examples/blinker?generation=2')
+    assert len(soup.select('td')) == width * height, f"Expecting a {width}x{height} table"
+    assert len(soup.select('td.cell--alive')) == 3, "Expecting exactly 3 living cells"
