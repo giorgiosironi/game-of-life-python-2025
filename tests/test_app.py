@@ -1,3 +1,5 @@
+from bs4 import BeautifulSoup
+
 def test_home_page(client):
     """Test that home page loads and contains expected h1"""
     response = client.get('/')
@@ -9,4 +11,7 @@ def test_blinker_page(client):
     width, height = 8, 6
     response = client.get('/examples/blinker')
     assert response.status_code == 200
-    assert response.data.count(b'<td>') == width * height, f"Expecting a {width}x{height} table"
+    
+    soup = BeautifulSoup(response.data, 'html.parser')
+    assert len(soup.select('td')) == width * height, f"Expecting a {width}x{height} table"
+    assert len(soup.select('td.cell--alive')) == 3, "Expecting exactly 3 living cells"
