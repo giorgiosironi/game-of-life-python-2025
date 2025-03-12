@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder='../templates')
 def hello():
     return render_template('index.html')
 
-def blinker_view_model():
+def _blinker_view_model():
     width, height = 8, 6
     alive_cells = [
         AliveCell(2, 3),
@@ -18,5 +18,5 @@ def blinker_view_model():
 
 @app.route('/examples/blinker')
 def blinker_example():
-    displayed_cells = blinker_view_model()
+    displayed_cells = _blinker_view_model()
     return render_template('generation.html', displayed_cells=displayed_cells, title="Blinker Example")
