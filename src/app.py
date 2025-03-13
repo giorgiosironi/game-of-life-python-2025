@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
-from view_model import AliveCell, construct_view_model
+from view_model import construct_view_model
+from world import evolve
+from alive_cell import AliveCell
 
 app = Flask(__name__, template_folder='../templates')
 
@@ -12,9 +14,6 @@ world_state_containing_a_blinker = [
     AliveCell(3, 3),
     AliveCell(4, 3),
 ]
-
-def evolve(model):
-    return model
 
 @app.route('/examples/blinker')
 def blinker_example():

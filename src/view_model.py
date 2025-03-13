@@ -1,9 +1,5 @@
 from dataclasses import dataclass
-
-@dataclass
-class AliveCell:
-    x: int
-    y: int
+from alive_cell import AliveCell
 
 @dataclass
 class DisplayedCell:
