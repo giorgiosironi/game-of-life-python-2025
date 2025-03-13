@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, TypeAlias
 
-@dataclass
+@dataclass(frozen=True)
 class AliveCell:
     x: int
     y: int 
