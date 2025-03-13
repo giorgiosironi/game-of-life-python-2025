@@ -1,7 +1,8 @@
-from neighborhood import count_alive_neighbors
+from neighborhood import find_neighbors
 from world import WorldState
 
 def evolve(world_state: WorldState) -> WorldState:
     for cell in world_state:
-        alive_neighbors = count_alive_neighbors(world_state, cell)
+        neighbors = find_neighbors(cell)
+        alive_neighbors = sum(1 for neighbor in neighbors if neighbor in world_state)
     return []
