@@ -1,4 +1,4 @@
-from world import WorldState, evolve
+from evolution import WorldState, evolve
 from alive_cell import AliveCell
 
 def test_empty_world_stays_empty():

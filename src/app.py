@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from view_model import construct_view_model
-from world import evolve
+from evolution import evolve
 from alive_cell import AliveCell
 
 app = Flask(__name__, template_folder='../templates')
