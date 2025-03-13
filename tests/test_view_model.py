@@ -1,4 +1,4 @@
-from view_model import AliveCell, construct_view_model
+from view_model import AliveCell, DisplayedCell, construct_view_model
 
 max_x = 2
 max_y = 2
@@ -6,7 +6,7 @@ total_rows = max_y + 1
 total_columns = max_x + 1
 
 def count_alive_cells(view_model):
-    return sum(cell for row in view_model for cell in row)
+    return sum(cell.alive for row in view_model for cell in row)
 
 def assert_rows(view_model):
     assert len(view_model) == total_rows, f"Expected {total_rows} rows"
@@ -32,7 +32,11 @@ def test_one_alive_cell_is_displayed():
     assert_rows(view_model)
     assert_columns(view_model)
     assert count_alive_cells(view_model) == 1, "Expect one cell to be alive"
-    assert view_model[y][x], "Expect the correct cell to be alive"
+    
+    cell = view_model[y][x]
+    assert cell.alive, "Expect the correct cell to be alive"
+    assert cell.x == x, "Cell should have correct x coordinate"
+    assert cell.y == y, "Cell should have correct y coordinate"
 
 def test_two_alive_cells_are_displayed():
     x1, y1 = 0, 0  # top-left corner
@@ -46,5 +50,13 @@ def test_two_alive_cells_are_displayed():
     assert_rows(view_model)
     assert_columns(view_model)
     assert count_alive_cells(view_model) == 2, "Expect two cells to be alive"
-    assert view_model[y1][x1], "Expect top-left cell to be alive"
-    assert view_model[y2][x2], "Expect bottom-right cell to be alive"
+    
+    cell1 = view_model[y1][x1]
+    assert cell1.alive, "Expect top-left cell to be alive"
+    assert cell1.x == x1, "Top-left cell should have correct x coordinate"
+    assert cell1.y == y1, "Top-left cell should have correct y coordinate"
+    
+    cell2 = view_model[y2][x2]
+    assert cell2.alive, "Expect bottom-right cell to be alive"
+    assert cell2.x == x2, "Bottom-right cell should have correct x coordinate"
+    assert cell2.y == y2, "Bottom-right cell should have correct y coordinate"

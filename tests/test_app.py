@@ -12,8 +12,8 @@ def test_blinker_starts_horizontal(page):
     assert len(soup.select('td')) == width * height, f"Expecting a {width}x{height} table"
     assert len(soup.select('td.cell--alive')) == 3, "Expecting exactly 3 living cells"
     
-    #alive_y_coords = [int(cell['data-y']) for cell in soup.select('td.cell--alive')]
-    #assert len(set(alive_y_coords)) == 1, "Expecting all cells to share the same y coordinate"
+    alive_y_coords = [int(cell['data-y']) for cell in soup.select('td.cell--alive')]
+    assert len(set(alive_y_coords)) == 1, "Expecting all cells to share the same y coordinate"
 
 def test_blinker_evolves(page):
     """Test that blinker example page evolves to the next generation"""
