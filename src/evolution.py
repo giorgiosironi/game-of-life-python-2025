@@ -1,7 +1,5 @@
-from world import AliveCell, WorldState
-
-def count_alive_neighbors(world_state: WorldState, cell: AliveCell) -> int:
-    pass
+from neighborhood import count_alive_neighbors
+from world import WorldState
 
 def evolve(world_state: WorldState) -> WorldState:
     for cell in world_state:
