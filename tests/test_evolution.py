@@ -34,4 +34,4 @@ def test_survival_alive_cell_with_two_alive_neighbors_lives():
     
     next_state = evolve(world_state)
     
-    #assert AliveCell(1, 1) in next_state, "Expected cell at (1,1) to survive with two neighbors" 
+    assert AliveCell(1, 1) in next_state, "Expected cell at (1,1) to survive with two neighbors" 
