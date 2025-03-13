@@ -23,4 +23,15 @@ def test_underpopulation_alive_cell_with_one_alive_neighbor_dies():
     
     next_state = evolve(world_state)
     
-    assert AliveCell(1, 1) not in next_state, "Expected cell at (1,1) to die from underpopulation" 
+    assert AliveCell(1, 1) not in next_state, "Expected cell at (1,1) to die from underpopulation"
+
+def test_survival_alive_cell_with_two_alive_neighbors_lives():
+    world_state: WorldState = [
+        AliveCell(x=1, y=1),
+        AliveCell(x=1, y=2),
+        AliveCell(x=1, y=0),
+    ]
+    
+    next_state = evolve(world_state)
+    
+    assert AliveCell(1, 1) in next_state, "Expected cell at (1,1) to survive with two neighbors" 
