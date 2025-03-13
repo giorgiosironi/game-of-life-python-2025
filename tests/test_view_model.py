@@ -1,5 +1,5 @@
 from view_model import DisplayedCell, construct_view_model
-from alive_cell import AliveCell
+from world import AliveCell
 
 max_x = 2
 max_y = 2

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from alive_cell import AliveCell
+from world import AliveCell
 
 @dataclass
 class DisplayedCell:

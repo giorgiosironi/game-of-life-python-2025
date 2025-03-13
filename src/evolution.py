@@ -1,7 +1,4 @@
-from typing import List, TypeAlias
-from alive_cell import AliveCell
-
-WorldState: TypeAlias = List[AliveCell]
+from world import AliveCell, WorldState
 
 def count_alive_neighbors(world_state: WorldState, cell: AliveCell) -> int:
     pass
