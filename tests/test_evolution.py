@@ -47,4 +47,18 @@ def test_cell_with_three_neighbors_survives():
     
     next_state = evolve(world_state)
     
-    assert cell in next_state, "Cell with three neighbors should survive" 
+    assert cell in next_state, "Expected cell with three neighbors should survive" 
+
+def test_overcrowding_alive_cell_with_four_neighbors_dies():
+    cell = AliveCell(x=1, y=1)
+    neighbors = [
+        AliveCell(x=0, y=0),
+        AliveCell(x=0, y=1),
+        AliveCell(x=0, y=2),
+        AliveCell(x=1, y=0),
+    ]
+    world_state = [cell] + neighbors
+    
+    next_state = evolve(world_state)
+    
+    assert cell not in next_state, "Expected cell with four neighbors to die from overcrowding"
