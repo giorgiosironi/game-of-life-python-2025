@@ -34,10 +34,15 @@ def test_blinker_evolves_to_vertical(page):
     assert_only_a_blinker_is_present(soup)
     assert_blinker_is_vertical(soup)
 
-def test_blinker_cycles_back_in_any_odd_generation(page):
-    soup = page('/examples/blinker?generation=7')
+def test_blinker_cycles_back_to_horizontal_in_any_odd_generation(page):
+    soup = page('/examples/blinker?generation=3')
     assert_table_is_displayed(soup)
     assert_only_a_blinker_is_present(soup)
     assert_blinker_is_horizontal(soup)
     
+def test_blinker_cycles_back_to_vertical_in_any_even_generation(page):
+    soup = page('/examples/blinker?generation=4')
+    assert_table_is_displayed(soup)
+    assert_only_a_blinker_is_present(soup)
+    assert_blinker_is_vertical(soup)
 
