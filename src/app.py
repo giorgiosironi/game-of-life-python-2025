@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, url_for
 from view_model import construct_world_window
 from evolution import evolve
-from world import AliveCell
+from world import AliveCell, WorldState
 
 app = Flask(__name__, template_folder='../templates')
 
 @app.route('/')
-def hello():
+def hello() -> str:
     return render_template('index.html')
 
 world_state_containing_a_blinker = [
@@ -15,13 +15,13 @@ world_state_containing_a_blinker = [
     AliveCell(4, 3),
 ]
 
-def evolve_to_generation(world_state, generation):
+def evolve_to_generation(world_state: WorldState, generation: int) -> WorldState:
     for _ in range(2, generation + 1):
         world_state = evolve(world_state)
     return world_state
 
 @app.route('/examples/blinker')
-def blinker_example():
+def blinker_example() -> str:
     generation = int(request.args.get('generation', '1'))
     width = int(request.args.get('width', '8'))
     height = int(request.args.get('height', '6'))
