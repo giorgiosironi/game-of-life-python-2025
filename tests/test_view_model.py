@@ -1,30 +1,30 @@
-from view_model import DisplayedCell, construct_world_window
-from world import AliveCell
+from view_model import DisplayedCell, WorldWindow, construct_world_window
+from world import AliveCell, WorldState
 
 max_x = 2
 max_y = 2
 total_rows = max_y + 1
 total_columns = max_x + 1
 
-def count_alive_cells(view_model):
+def count_alive_cells(view_model: WorldWindow) -> int:
     return sum(cell.alive for row in view_model for cell in row)
 
-def assert_rows(view_model):
+def assert_rows(view_model: WorldWindow) -> None:
     assert len(view_model) == total_rows, f"Expected {total_rows} rows"
 
-def assert_columns(view_model):
+def assert_columns(view_model: WorldWindow) -> None:
     for row_index, row in enumerate(view_model):
         assert len(row) == total_columns, f"Expected {total_columns} cells in row {row_index}"
 
-def test_empty_list_of_alive_cells_displays_all_dead_cells():
-    alive_cells = []
+def test_empty_list_of_alive_cells_displays_all_dead_cells() -> None:
+    alive_cells: WorldState = []
     view_model = construct_world_window(alive_cells, max_x=max_x, max_y=max_y)
     
     assert_rows(view_model)
     assert_columns(view_model)
     assert count_alive_cells(view_model) == 0, "Expect all cells to be dead"
 
-def test_one_alive_cell_is_displayed():
+def test_one_alive_cell_is_displayed() -> None:
     x = 1
     y = 2
     alive_cells = [AliveCell(x, y)]
@@ -39,7 +39,7 @@ def test_one_alive_cell_is_displayed():
     assert cell.x == x, "Cell should have correct x coordinate"
     assert cell.y == y, "Cell should have correct y coordinate"
 
-def test_two_alive_cells_are_displayed():
+def test_two_alive_cells_are_displayed() -> None:
     x1, y1 = 0, 0  # top-left corner
     x2, y2 = 2, 2  # bottom-right corner
     alive_cells = [
