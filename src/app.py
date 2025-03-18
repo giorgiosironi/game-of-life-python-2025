@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from view_model import construct_view_model
 from evolution import evolve
 from world import AliveCell
@@ -28,7 +28,7 @@ def blinker_example():
     world_state = evolve_to_generation(world_state_containing_a_blinker, generation)
         
     displayed_cells = construct_view_model(world_state, max_x=width-1, max_y=height-1)
-    next_state_path = f'/examples/blinker?generation={generation + 1}&width={width}&height={height}'
+    next_state_path = url_for('blinker_example', generation=generation + 1, width=width, height=height)
     
     return render_template(
         'generation.html', 
