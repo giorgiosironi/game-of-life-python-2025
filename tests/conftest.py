@@ -9,11 +9,11 @@ def client() -> FlaskClient:
     app.config['TESTING'] = True
     return app.test_client()
 
-PageGetter: TypeAlias = Callable[[str], BeautifulSoup]
+LoadPage: TypeAlias = Callable[[str], BeautifulSoup]
 
 @pytest.fixture
-def page(client: FlaskClient) -> PageGetter:
-    def _get_page(url: str) -> BeautifulSoup:
+def page(client: FlaskClient) -> LoadPage:
+    def _load_page(url: str) -> BeautifulSoup:
         response = client.get(url)
         return BeautifulSoup(response.data, 'html.parser')
-    return _get_page 
+    return _load_page 
