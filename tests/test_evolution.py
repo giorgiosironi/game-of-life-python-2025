@@ -62,3 +62,14 @@ def test_overcrowding_alive_cell_with_four_neighbors_dies():
     next_state = evolve(world_state)
     
     assert cell not in next_state, "Expected cell with four neighbors to die from overcrowding"
+
+def test_reproduction_dead_cell_with_three_neighbors_becomes_alive():
+    world_state = [
+        AliveCell(x=0, y=0),
+        AliveCell(x=0, y=1),
+        AliveCell(x=0, y=2),
+    ]
+    
+    next_state = evolve(world_state)
+    
+    assert AliveCell(1, 1) in next_state, "Expected dead cell at (1,1) to become alive from reproduction"
