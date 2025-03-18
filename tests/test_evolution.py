@@ -35,3 +35,16 @@ def test_survival_alive_cell_with_two_alive_neighbors_lives():
     next_state = evolve(world_state)
     
     assert AliveCell(1, 1) in next_state, "Expected cell at (1,1) to survive with two neighbors" 
+
+def test_cell_with_three_neighbors_survives():
+    cell = AliveCell(x=1, y=1)
+    neighbors = [
+        AliveCell(x=0, y=0),
+        AliveCell(x=0, y=1),
+        AliveCell(x=0, y=2),
+    ]
+    world_state = [cell] + neighbors
+    
+    next_state = evolve(world_state)
+    
+    assert cell in next_state, "Cell with three neighbors should survive" 
