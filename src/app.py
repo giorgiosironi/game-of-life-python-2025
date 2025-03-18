@@ -15,12 +15,16 @@ world_state_containing_a_blinker = [
     AliveCell(4, 3),
 ]
 
+def evolve_to_generation(world_state, generation):
+    for _ in range(2, generation + 1):
+        world_state = evolve(world_state)
+    return world_state
+
 @app.route('/examples/blinker')
 def blinker_example():
-    generation = request.args.get('generation', '1')
+    generation = int(request.args.get('generation', '1'))
     width, height = 8, 6
-    world_state = world_state_containing_a_blinker
-    if generation == '2':
-        world_state = evolve(world_state)
+    world_state = evolve_to_generation(world_state_containing_a_blinker, generation)
+        
     displayed_cells = construct_view_model(world_state, max_x=width-1, max_y=height-1)
     return render_template('generation.html', displayed_cells=displayed_cells, title="Blinker Example")
