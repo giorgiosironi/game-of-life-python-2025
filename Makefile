@@ -1,4 +1,4 @@
-.PHONY: setup dev clean test
+.PHONY: setup dev clean test typecheck
 
 setup:
 	python3 -m venv venv
@@ -15,3 +15,6 @@ test:
 clean:
 	rm -rf venv
 	find . -type d -name __pycache__ -exec rm -rf {} + 
+
+typecheck:
+	mypy src/ tests/ --strict --disallow-untyped-defs --disallow-incomplete-defs
