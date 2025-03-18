@@ -1,4 +1,4 @@
-from view_model import DisplayedCell, construct_view_model
+from view_model import DisplayedCell, construct_world_window
 from world import AliveCell
 
 max_x = 2
@@ -18,7 +18,7 @@ def assert_columns(view_model):
 
 def test_empty_list_of_alive_cells_displays_all_dead_cells():
     alive_cells = []
-    view_model = construct_view_model(alive_cells, max_x=max_x, max_y=max_y)
+    view_model = construct_world_window(alive_cells, max_x=max_x, max_y=max_y)
     
     assert_rows(view_model)
     assert_columns(view_model)
@@ -28,7 +28,7 @@ def test_one_alive_cell_is_displayed():
     x = 1
     y = 2
     alive_cells = [AliveCell(x, y)]
-    view_model = construct_view_model(alive_cells, max_x=max_x, max_y=max_y)
+    view_model = construct_world_window(alive_cells, max_x=max_x, max_y=max_y)
     
     assert_rows(view_model)
     assert_columns(view_model)
@@ -46,7 +46,7 @@ def test_two_alive_cells_are_displayed():
         AliveCell(x1, y1),
         AliveCell(x2, y2),
     ]
-    view_model = construct_view_model(alive_cells, max_x=max_x, max_y=max_y)
+    view_model = construct_world_window(alive_cells, max_x=max_x, max_y=max_y)
     
     assert_rows(view_model)
     assert_columns(view_model)

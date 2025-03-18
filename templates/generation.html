@@ -19,7 +19,7 @@
 </head>
 <body>
     <table>
-        {% for row in displayed_cells %}
+        {% for row in world_window %}
             <tr>
                 {% for cell in row %}
                     <td data-x="{{ cell.x }}" data-y="{{ cell.y }}" {% if cell.alive %}class="cell--alive"{% endif %}></td>
