@@ -23,4 +23,8 @@ jobs:
       run: make test
       
     - name: Run type checking
-      run: make typecheck 
+      run: make typecheck
+
+    - name: Run linting
+      run: make lint
+      continue-on-error: true

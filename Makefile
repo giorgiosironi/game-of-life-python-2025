@@ -1,4 +1,4 @@
-.PHONY: setup dev clean test typecheck
+.PHONY: setup dev clean test typecheck lint
 
 setup:
 	python3 -m venv venv
@@ -18,3 +18,6 @@ clean:
 
 typecheck:
 	. venv/bin/activate && mypy src/ tests/ --strict --disallow-untyped-defs --disallow-incomplete-defs
+
+lint:
+	. venv/bin/activate && pylint src/ tests/

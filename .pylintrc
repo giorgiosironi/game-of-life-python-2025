@@ -1,0 +1,26 @@
+[MASTER]
+ignore=
+persistent=yes
+load-plugins=
+
+[MESSAGES CONTROL]
+disable=C0111,  # missing docstring
+        C0103,  # invalid-name
+        R0903,  # too-few-public-methods
+        W0511   # fixme
+
+[FORMAT]
+max-line-length=120
+indent-string='    '
+
+[BASIC]
+good-names=i,j,k,ex_
+
+[MISCELLANEOUS]
+notes=FIXME,XXX,TODO
+
+[SIMILARITIES]
+min-similarity-lines=4
+ignore-comments=yes
+ignore-docstrings=yes
+ignore-imports=yes 
