@@ -1,15 +1,13 @@
 from flask.testing import FlaskClient
 import pytest
-from typing import TypeAlias, Callable
 from bs4 import BeautifulSoup
 from app import app
+from fixtures_types import LoadPage
 
 @pytest.fixture
 def client() -> FlaskClient:
     app.config['TESTING'] = True
     return app.test_client()
-
-LoadPage: TypeAlias = Callable[[str], BeautifulSoup]
 
 @pytest.fixture
 def page(client: FlaskClient) -> LoadPage:

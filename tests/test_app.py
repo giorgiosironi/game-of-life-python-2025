@@ -1,5 +1,7 @@
 from bs4 import BeautifulSoup
 
+from fixtures_types import LoadPage
+
 default_width, default_height = 8, 6
 
 def assert_table_has_custom_dimensions(soup, custom_width, custom_height) -> None:
@@ -50,7 +52,7 @@ def test_blinker_cycles_back_to_vertical_in_any_even_generation(page) -> None:
     assert_only_a_blinker_is_present(soup)
     assert_blinker_is_vertical(soup)
 
-def test_the_world_window_can_have_custom_dimensions(page) -> None:
+def test_the_world_window_can_have_custom_dimensions(page: LoadPage) -> None:
     custom_width, custom_height = 4, 3
     soup = page(f'/examples/blinker?width={custom_width}&height={custom_height}')
     assert_table_has_custom_dimensions(soup, custom_width, custom_height)
