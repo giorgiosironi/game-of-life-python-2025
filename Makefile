@@ -10,11 +10,21 @@ setup:
 dev:
 	. venv/bin/activate && flask --app src/app.py run --debug
 
+setup-prod:
+	python3 -m venv venv-prod
+	. venv-prod/bin/activate && \
+		pip install --upgrade pip setuptools && \
+		pip install poetry && \
+		poetry install --only=main
+
+prod:
+	. venv-prod/bin/activate && flask --app src/app.py run --debug
+
 test:
 	. venv/bin/activate && PYTHONPATH=src pytest
 
 clean:
-	rm -rf venv
+	rm -rf venv venv-prod
 	find . -type d -name __pycache__ -exec rm -rf {} + 
 
 typecheck:
