@@ -17,4 +17,4 @@ clean:
 	find . -type d -name __pycache__ -exec rm -rf {} + 
 
 typecheck:
-	mypy src/ tests/ --strict --disallow-untyped-defs --disallow-incomplete-defs
+	. venv/bin/activate && mypy src/ tests/ --strict --disallow-untyped-defs --disallow-incomplete-defs
