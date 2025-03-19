@@ -2,7 +2,7 @@ from neighborhood import find_neighbors
 from world import AliveCell
 
 
-def test_find_neighbors_returns_eight_neighbors():
+def test_find_neighbors_returns_eight_neighbors() -> None:
     cell = AliveCell(x=4, y=7)  # Arbitrary position
     
     neighbors = find_neighbors(cell)

@@ -1,5 +1,5 @@
-from evolution import WorldState, evolve
-from world import AliveCell
+from evolution import evolve
+from world import AliveCell, WorldState
 
 def test_empty_world_stays_empty() -> None:
     world_state: WorldState = []
