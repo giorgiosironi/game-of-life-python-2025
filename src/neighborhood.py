@@ -1,6 +1,7 @@
 from typing import List
 from world import AliveCell
 
+
 def find_neighbors(cell: AliveCell) -> List[AliveCell]:
     neighbors = [
         AliveCell(cell.x + dx, cell.y + dy)

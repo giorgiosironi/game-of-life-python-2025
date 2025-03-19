@@ -4,9 +4,9 @@ from world import AliveCell
 
 def test_find_neighbors_returns_eight_neighbors() -> None:
     cell = AliveCell(x=4, y=7)  # Arbitrary position
-    
+
     neighbors = find_neighbors(cell)
-    
+
     assert len(neighbors) == 8
     for neighbor in neighbors:
         x_diff = abs(neighbor.x - cell.x)
