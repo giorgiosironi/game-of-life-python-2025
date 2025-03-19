@@ -1,4 +1,4 @@
-from view_model import DisplayedCell, WorldWindow, construct_world_window
+from view_model import WorldWindow, construct_world_window
 from world import AliveCell, WorldState
 
 max_x = 2

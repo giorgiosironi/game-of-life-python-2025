@@ -1,5 +1,5 @@
 from neighborhood import find_neighbors
-from world import WorldState, AliveCell
+from world import WorldState
 
 
 def evolve(world_state: WorldState) -> WorldState:

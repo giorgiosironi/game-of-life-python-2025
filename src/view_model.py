@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from world import AliveCell, WorldState
 from typing import List, TypeAlias
+from world import AliveCell, WorldState
 
 
 @dataclass

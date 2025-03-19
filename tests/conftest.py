@@ -1,8 +1,8 @@
 from flask.testing import FlaskClient
 import pytest
 from bs4 import BeautifulSoup
-from app import app
 from fixtures_types import LoadPage
+from app import app
 
 
 @pytest.fixture
