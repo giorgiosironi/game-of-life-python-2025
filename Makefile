@@ -1,4 +1,4 @@
-.PHONY: setup dev clean test typecheck lint
+.PHONY: setup dev clean test typecheck lint format
 
 setup:
 	python3 -m venv venv
@@ -21,3 +21,6 @@ typecheck:
 
 lint:
 	. venv/bin/activate && pylint src/ tests/
+
+format:
+	. venv/bin/activate && autopep8 --in-place --recursive src/ tests/
