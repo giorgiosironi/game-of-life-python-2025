@@ -1,0 +1,31 @@
+[project]
+name = "game-of-life-python-2025"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Giorgio Sironi",email = "work@giorgiosironi.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "flask (==3.1.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+pytest = "8.1.1"
+pytest-flask = "1.3.0"
+beautifulsoup4 = "4.12.3"
+types-beautifulsoup4 = "4.12.0.20250204"
+mypy = "1.15.0"
+pylint = "^3.3.5"
+autopep8 = "^2.3.2"
+
