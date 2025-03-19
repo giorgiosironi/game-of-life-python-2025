@@ -11,8 +11,8 @@ def fixture_client() -> FlaskClient:
     return app.test_client()
 
 
-@pytest.fixture(name='page')
-def fixture_page(client: FlaskClient) -> LoadPage:
+@pytest.fixture(name='load_page')
+def fixture_load_page(client: FlaskClient) -> LoadPage:
     def _load_page(url: str) -> BeautifulSoup:
         response = client.get(url)
         return BeautifulSoup(response.data, 'html.parser')

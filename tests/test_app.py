@@ -45,43 +45,43 @@ def assert_blinker_is_vertical(soup: BeautifulSoup) -> None:
                ) == 1, "Expecting all cells to share the same x coordinate"
 
 
-def test_home_page_loads(page: LoadPage) -> None:
-    soup = page('/')
+def test_home_page_loads(load_page: LoadPage) -> None:
+    soup = load_page('/')
     h1 = soup.select_one('h1')
     assert h1 is not None
     assert h1.text == 'Hello, world!'
 
 
-def test_blinker_starts_horizontal(page: LoadPage) -> None:
-    soup = page('/examples/blinker')
+def test_blinker_starts_horizontal(load_page: LoadPage) -> None:
+    soup = load_page('/examples/blinker')
     assert_table_is_displayed(soup)
     assert_only_a_blinker_is_present(soup)
     assert_blinker_is_horizontal(soup)
 
 
-def test_blinker_evolves_to_vertical(page: LoadPage) -> None:
-    soup = page('/examples/blinker?generation=2')
+def test_blinker_evolves_to_vertical(load_page: LoadPage) -> None:
+    soup = load_page('/examples/blinker?generation=2')
     assert_table_is_displayed(soup)
     assert_only_a_blinker_is_present(soup)
     assert_blinker_is_vertical(soup)
 
 
-def test_blinker_cycles_back_to_horizontal_in_any_odd_generation(page: LoadPage) -> None:
-    soup = page('/examples/blinker?generation=3')
+def test_blinker_cycles_back_to_horizontal_in_any_odd_generation(load_page: LoadPage) -> None:
+    soup = load_page('/examples/blinker?generation=3')
     assert_table_is_displayed(soup)
     assert_only_a_blinker_is_present(soup)
     assert_blinker_is_horizontal(soup)
 
 
-def test_blinker_cycles_back_to_vertical_in_any_even_generation(page: LoadPage) -> None:
-    soup = page('/examples/blinker?generation=4')
+def test_blinker_cycles_back_to_vertical_in_any_even_generation(load_page: LoadPage) -> None:
+    soup = load_page('/examples/blinker?generation=4')
     assert_table_is_displayed(soup)
     assert_only_a_blinker_is_present(soup)
     assert_blinker_is_vertical(soup)
 
 
-def test_the_world_window_can_have_custom_dimensions(page: LoadPage) -> None:
+def test_the_world_window_can_have_custom_dimensions(load_page: LoadPage) -> None:
     custom_width, custom_height = 4, 3
-    soup = page(
+    soup = load_page(
         f'/examples/blinker?width={custom_width}&height={custom_height}')
     assert_table_has_custom_dimensions(soup, custom_width, custom_height)
