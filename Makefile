@@ -3,8 +3,9 @@
 setup:
 	python3 -m venv venv
 	. venv/bin/activate && \
-		pip install --upgrade pip && \
-		pip install -r requirements.txt
+		pip install --upgrade pip setuptools && \
+		pip install -r requirements.txt && \
+		pip install poetry
 
 dev:
 	. venv/bin/activate && flask --app src/app.py run --debug
