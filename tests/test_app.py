@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 from fixtures_types import LoadPage
 
@@ -16,12 +16,20 @@ def assert_only_a_blinker_is_present(soup: BeautifulSoup) -> None:
     """Smoke tests that only 3 living cells are displayed"""
     assert len(soup.select('td.cell--alive')) == 3, "Expecting exactly 3 living cells"
 
+def _single_attribute(tag: Tag, attribute_name: str) -> str:
+    """Ensure a BeautifulSoup data attribute is a string."""
+    attr = tag.get(attribute_name)
+    assert isinstance(attr, str), "Expected data attribute to be a string"
+    return attr
+
 def assert_blinker_is_horizontal(soup: BeautifulSoup) -> None:
-    alive_y_coords = [int(cell['data-y']) for cell in soup.select('td.cell--alive')]
+    """Checks that all living cells share the same y coordinate"""
+    alive_y_coords = [int(_single_attribute(cell, 'data-y')) for cell in soup.select('td.cell--alive')]
     assert len(set(alive_y_coords)) == 1, "Expecting all cells to share the same y coordinate"
 
 def assert_blinker_is_vertical(soup: BeautifulSoup) -> None:
-    alive_x_coords = [int(cell['data-x']) for cell in soup.select('td.cell--alive')]
+    """Checks that all living cells share the same x coordinate"""
+    alive_x_coords = [int(_single_attribute(cell, 'data-x')) for cell in soup.select('td.cell--alive')]
     assert len(set(alive_x_coords)) == 1, "Expecting all cells to share the same x coordinate"
 
 def test_home_page_loads(page: LoadPage) -> None:
