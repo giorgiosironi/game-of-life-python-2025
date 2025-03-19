@@ -34,7 +34,9 @@ def assert_blinker_is_vertical(soup: BeautifulSoup) -> None:
 
 def test_home_page_loads(page: LoadPage) -> None:
     soup = page('/')
-    assert soup.select_one('h1').text == 'Hello, world!'
+    h1 = soup.select_one('h1')
+    assert h1 is not None
+    assert h1.text == 'Hello, world!'
 
 def test_blinker_starts_horizontal(page: LoadPage) -> None:
     soup = page('/examples/blinker')
