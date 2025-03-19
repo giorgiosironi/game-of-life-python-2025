@@ -16,7 +16,7 @@ def evolve(world_state: WorldState) -> WorldState:
         alive_neighbors = sum(
             1 for neighbor in neighbors if neighbor in world_state)
         if cell in world_state:
-            if alive_neighbors == 2 or alive_neighbors == 3:
+            if alive_neighbors in [2, 3]:
                 next_state.append(cell)
         else:
             if alive_neighbors == 3:
