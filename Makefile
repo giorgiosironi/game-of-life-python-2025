@@ -18,7 +18,8 @@ setup-prod:
 		poetry install --only=main
 
 prod:
-	. venv-prod/bin/activate && flask --app src/app.py run --debug
+	. venv-prod/bin/activate && \
+	uwsgi --http 127.0.0.1:8000 --master -p 4 --pythonpath=src -w app:app
 
 test:
 	. venv/bin/activate && PYTHONPATH=src pytest
